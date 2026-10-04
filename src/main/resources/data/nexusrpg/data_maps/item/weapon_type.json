@@ -1,0 +1,11 @@
+{
+  "values": {
+    "minecraft:wooden_sword": "nexusrpg:one_handed_sword",
+    "minecraft:stone_sword": "nexusrpg:one_handed_sword",
+    "minecraft:iron_sword": "nexusrpg:one_handed_sword",
+    "minecraft:diamond_sword": "nexusrpg:one_handed_sword",
+    "minecraft:iron_axe": "nexusrpg:axe",
+    "minecraft:diamond_axe": "nexusrpg:axe",
+    "minecraft:bow": "nexusrpg:bow"
+  }
+}

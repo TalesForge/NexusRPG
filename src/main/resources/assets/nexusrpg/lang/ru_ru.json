@@ -1,0 +1,15 @@
+{
+  "rarity.nexusrpg.common": "Обычный",
+  "rarity.nexusrpg.uncommon": "Необычный",
+  "rarity.nexusrpg.rare": "Редкий",
+  "rarity.nexusrpg.epic": "Эпический",
+  "rarity.nexusrpg.legendary": "Легендарный",
+  "class_type.nexusrpg.combat": "Боевой",
+  "class_type.nexusrpg.social": "Социальный",
+  "weapon_type.nexusrpg.one_handed_sword": "Одноручный меч",
+  "weapon_type.nexusrpg.two_handed_sword": "Двуручный меч",
+  "weapon_type.nexusrpg.axe": "Секира",
+  "weapon_type.nexusrpg.bow": "Лук",
+  "class.nexusrpg.warrior": "Воин",
+  "faction.nexusrpg.villagers": "Жители деревень"
+}

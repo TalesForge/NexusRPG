@@ -1,0 +1,15 @@
+{
+  "rarity.nexusrpg.common": "Common",
+  "rarity.nexusrpg.uncommon": "Uncommon",
+  "rarity.nexusrpg.rare": "Rare",
+  "rarity.nexusrpg.epic": "Epic",
+  "rarity.nexusrpg.legendary": "Legendary",
+  "class_type.nexusrpg.combat": "Combat",
+  "class_type.nexusrpg.social": "Social",
+  "weapon_type.nexusrpg.one_handed_sword": "One-handed sword",
+  "weapon_type.nexusrpg.two_handed_sword": "Two-handed sword",
+  "weapon_type.nexusrpg.axe": "Axe",
+  "weapon_type.nexusrpg.bow": "Bow",
+  "class.nexusrpg.warrior": "Warrior",
+  "faction.nexusrpg.villagers": "Villagers"
+}

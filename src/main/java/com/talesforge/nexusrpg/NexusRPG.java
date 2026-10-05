@@ -24,11 +24,11 @@ public class NexusRPG {
     public NexusRPG(IEventBus modEventBus, ModContainer modContainer) {
         RpgAttachments.ATTACHMENTS.register(modEventBus);
         RpgComponents.COMPONENTS.register(modEventBus);
-        // Registers, packages, and data maps are registered in internal.RpgModEvents.
+        // Registries, packets, and data maps are registered in internal.RpgModEvents.
 
         NeoForge.EVENT_BUS.register(this);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, Config.SPEC);
     }
 
     public static ResourceLocation id(String path) {

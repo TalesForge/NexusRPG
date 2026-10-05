@@ -8,6 +8,7 @@ import com.talesforge.nexusrpg.api.event.TeamMemberJoinEvent;
 import com.talesforge.nexusrpg.api.event.TeamMemberLeaveEvent;
 import com.talesforge.nexusrpg.api.team.RpgTeam;
 import com.talesforge.nexusrpg.api.team.TeamService;
+import com.talesforge.nexusrpg.config.Config;
 import com.talesforge.nexusrpg.internal.data.ProfileStore;
 import com.talesforge.nexusrpg.internal.data.TeamManager;
 import net.minecraft.server.MinecraftServer;
@@ -15,6 +16,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.common.NeoForge;
 import org.jetbrains.annotations.Nullable;
 
@@ -58,6 +60,8 @@ public final class TeamServiceImpl implements TeamService {
         RpgTeam team = m.get(teamId).orElse(null);
         if (team == null) return false;
         if (team.members().contains(e.getUUID())) return true;
+        if (!(e instanceof Player) && !Config.ALLOW_MOBS_IN_TEAMS.get()) return false;
+        if (team.members().size() >= Config.MAX_TEAM_SIZE.get()) return false;
         if (NeoForge.EVENT_BUS.post(new TeamMemberJoinEvent(team, e)).isCanceled()) return false;
 
         leave(e);  // From the previous team (if any)
@@ -84,7 +88,7 @@ public final class TeamServiceImpl implements TeamService {
                 BuffType t = NexusRPGRegistries.BUFF_TYPES.get(b.type());
                 if (t != null) t.onRemove(e, b);
             }
-            m.removeMember(teamId, e.getUUID());  // Passes leadership, deletes the empty command.
+            m.removeMember(teamId, e.getUUID());  // Passes leadership, deletes the empty team.
         }
         ProfileStore.update(e, p -> p.withTeam(null));
         return true;

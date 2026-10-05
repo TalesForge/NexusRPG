@@ -7,6 +7,7 @@ import com.talesforge.nexusrpg.api.faction.Faction;
 import com.talesforge.nexusrpg.api.faction.Relation;
 import com.talesforge.nexusrpg.api.profile.ProfileService;
 import com.talesforge.nexusrpg.api.profile.RpgProfile;
+import com.talesforge.nexusrpg.config.Config;
 import com.talesforge.nexusrpg.internal.data.ProfileStore;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -37,6 +38,7 @@ public final class ProfileServiceImpl implements ProfileService {
     public boolean addClass(LivingEntity e, ResourceLocation c) {
         Guard.server(e);
         if (NexusRPGApi.rpgClass(e.level().registryAccess(), c).isEmpty() || hasClass(e, c)) return false;
+        if (classes(e).size() >= Config.MAX_CLASSES_PER_ENTITY.get()) return false;
         if (NeoForge.EVENT_BUS.post(new ClassChangeEvent(e, c, true)).isCanceled()) return false;
         ProfileStore.update(e, p -> {
             List<ResourceLocation> l = new ArrayList<>(p.classes());

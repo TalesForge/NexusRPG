@@ -3,6 +3,7 @@ package com.talesforge.nexusrpg.internal.command;
 import com.talesforge.nexusrpg.api.NexusRPGApi;
 import com.talesforge.nexusrpg.api.NexusRPGRegistries;
 import com.talesforge.nexusrpg.api.buff.BuffInstance;
+import com.talesforge.nexusrpg.api.profile.RpgProfile;
 import com.talesforge.nexusrpg.api.team.RpgTeam;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -21,6 +22,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 /**
  * /nexusrpg faction set|clear <target> [id]
@@ -69,6 +72,10 @@ public final class NexusRPGCommand {
                                 .executes(NexusRPGCommand::teamLeave)))
                         .then(Commands.literal("disband").then(Commands.argument("name", StringArgumentType.word())
                                 .executes(NexusRPGCommand::teamDisband))))
+                .then(Commands.literal("info").then(Commands.argument("target", EntityArgument.entity())
+                        .executes(NexusRPGCommand::info)))
+                .then(Commands.literal("reset").then(Commands.argument("target", EntityArgument.entity())
+                        .executes(NexusRPGCommand::reset)))
                 .then(Commands.literal("buff").then(Commands.literal("give")
                         .then(Commands.argument("target", EntityArgument.entity())
                                 .then(Commands.argument("id", ResourceLocationArgument.id()).suggests(BUFFS)
@@ -128,6 +135,25 @@ public final class NexusRPGCommand {
         int ticks = IntegerArgumentType.getInteger(c, "seconds") * 20;
         if (!NexusRPGApi.buffs().apply(t, BuffInstance.of(id, 1, ticks))) throw FAILED.create();
         ok(c, "Gave buff " + id);
+        return 1;
+    }
+
+    private static int info(CommandContext<CommandSourceStack> c) throws CommandSyntaxException {
+        LivingEntity t = living(c, "target");
+        RpgProfile p = NexusRPGApi.profiles().get(t);   // effective values (defaults applied)
+        boolean custom = NexusRPGApi.profiles().isCustomized(t);
+        String text = "Faction: " + p.faction().map(ResourceLocation::toString).orElse("none")
+                + "\nClasses: " + p.classes()
+                + "\nTeam: " + p.teamId().map(UUID::toString).orElse("none")
+                + "\nBuffs: " + p.buffs().size()
+                + "\nSource: " + (custom ? "custom (stored on entity)" : "defaults of entity type");
+        c.getSource().sendSuccess(() -> Component.literal(text), false);
+        return 1;
+    }
+
+    private static int reset(CommandContext<CommandSourceStack> c) throws CommandSyntaxException {
+        NexusRPGApi.profiles().resetToDefaults(living(c, "target"));
+        ok(c, "Faction and classes reset to defaults");
         return 1;
     }
 

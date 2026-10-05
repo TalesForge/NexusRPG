@@ -1,0 +1,310 @@
+{
+  "values": {
+    "minecraft:zombie": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:zombie_villager": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:husk": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:drowned": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:skeleton": {
+      "faction": "nexusrpg:undead",
+      "classes": [
+        "nexusrpg:archer"
+      ]
+    },
+    "minecraft:stray": {
+      "faction": "nexusrpg:undead",
+      "classes": [
+        "nexusrpg:archer"
+      ]
+    },
+    "minecraft:bogged": {
+      "faction": "nexusrpg:undead",
+      "classes": [
+        "nexusrpg:archer"
+      ]
+    },
+    "minecraft:giant": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:phantom": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:wither_skeleton": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:zombified_piglin": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:ghast": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:zoglin": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:skeleton_horse": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:zombie_horse": {
+      "faction": "nexusrpg:undead"
+    },
+    "minecraft:wither": {
+      "faction": "nexusrpg:undead"
+    },
+
+
+    "minecraft:wandering_trader": {
+      "faction": "nexusrpg:nomads"
+    },
+    "minecraft:trader_llama": {
+      "faction": "nexusrpg:nomads"
+    },
+
+
+    "minecraft:villager": {
+      "faction": "nexusrpg:villagers"
+    },
+
+
+    "minecraft:pillager": {
+      "faction": "nexusrpg:illagers",
+      "classes": [
+        "nexusrpg:archer"
+      ]
+    },
+    "minecraft:vindicator": {
+      "faction": "nexusrpg:illagers",
+      "classes": [
+        "nexusrpg:warrior"
+      ]
+    },
+    "minecraft:evoker": {
+      "faction": "nexusrpg:illagers",
+      "classes": [
+        "nexusrpg:mage"
+      ]
+    },
+    "minecraft:illusioner": {
+      "faction": "nexusrpg:illagers",
+      "classes": [
+        "nexusrpg:mage",
+        "nexusrpg:archer"
+      ]
+    },
+    "minecraft:ravager": {
+      "faction": "nexusrpg:illagers"
+    },
+
+
+    "minecraft:witch": {
+      "faction": "nexusrpg:wickeds",
+      "classes": [
+        "nexusrpg:alchemist"
+      ]
+    },
+
+
+    "minecraft:vex": {
+      "faction": "nexusrpg:ethereals",
+      "classes": [
+        "nexusrpg:warrior"
+      ]
+    },
+    "minecraft:allay": {
+      "faction": "nexusrpg:ethereals"
+    },
+
+
+    "minecraft:piglin": {
+      "faction": "nexusrpg:piglins",
+      "classes": [
+        "nexusrpg:warrior"
+      ]
+    },
+    "minecraft:piglin_brute": {
+      "faction": "nexusrpg:piglins",
+      "classes": [
+        "nexusrpg:warrior"
+      ]
+    },
+
+
+    "minecraft:warden": {
+      "faction": "nexusrpg:sculk"
+    },
+
+
+    "minecraft:enderman": {
+      "faction": "nexusrpg:void"
+    },
+    "minecraft:endermite": {
+      "faction": "nexusrpg:void"
+    },
+    "minecraft:shulker": {
+      "faction": "nexusrpg:void"
+    },
+    "minecraft:ender_dragon": {
+      "faction": "nexusrpg:void"
+    },
+
+
+    "minecraft:cod": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:salmon": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:tropical_fish": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:pufferfish": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:squid": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:glow_squid": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:dolphin": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:turtle": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:axolotl": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:tadpole": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:guardian": {
+      "faction": "nexusrpg:aquatics"
+    },
+    "minecraft:elder_guardian": {
+      "faction": "nexusrpg:aquatics"
+    },
+
+
+    "minecraft:creeper": {
+      "faction": "nexusrpg:creepers"
+    },
+
+
+    "minecraft:armadillo": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:bat": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:bee": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:camel": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:cat": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:chicken": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:cow": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:donkey": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:fox": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:frog": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:goat": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:horse": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:llama": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:mooshroom": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:mule": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:ocelot": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:panda": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:parrot": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:pig": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:polar_bear": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:rabbit": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:sheep": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:sniffer": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:strider": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:wolf": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:spider": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:cave_spider": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:silverfish": {
+      "faction": "nexusrpg:nature"
+    },
+    "minecraft:hoglin": {
+      "faction": "nexusrpg:nature"
+    },
+
+
+    "minecraft:breeze": {
+      "faction": "nexusrpg:elementals"
+    },
+    "minecraft:blaze": {
+      "faction": "nexusrpg:elementals"
+    },
+    "minecraft:slime": {
+      "faction": "nexusrpg:elementals"
+    },
+    "minecraft:magma_cube": {
+      "faction": "nexusrpg:elementals"
+    },
+
+
+    "minecraft:iron_golem": {
+      "faction": "nexusrpg:constructs"
+    },
+    "minecraft:snow_golem": {
+      "faction": "nexusrpg:constructs"
+    }
+  }
+}

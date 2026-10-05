@@ -2,6 +2,7 @@ package com.talesforge.nexusrpg.internal;
 
 import com.talesforge.nexusrpg.NexusRPG;
 import com.talesforge.nexusrpg.api.NexusRPGApi;
+import com.talesforge.nexusrpg.api.profile.DefaultProfile;
 import com.talesforge.nexusrpg.internal.command.NexusRPGCommand;
 import com.talesforge.nexusrpg.internal.data.RpgAttachments;
 import com.talesforge.nexusrpg.internal.data.ProfileStore;
@@ -9,6 +10,7 @@ import com.talesforge.nexusrpg.internal.data.TeamManager;
 import com.talesforge.nexusrpg.internal.network.ProfileSync;
 import com.talesforge.nexusrpg.internal.service.BuffServiceImpl;
 import com.talesforge.nexusrpg.internal.service.TeamServiceImpl;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -16,6 +18,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
@@ -37,6 +40,20 @@ public final class RpgGameEvents {
                 && le.hasData(RpgAttachments.PROFILE)) {
             BuffServiceImpl.tickEntity(le);
         }
+    }
+
+    @SubscribeEvent
+    public static void onEntityJoin(EntityJoinLevelEvent event) {
+        if (event.getLevel().isClientSide() || event.loadedFromDisk()) return;  // Only new spawns
+        if (!(event.getEntity() instanceof LivingEntity le) || le instanceof Player) return;
+        if (le.hasData(RpgAttachments.PROFILE)) return;  // Already has a profile
+
+        DefaultProfile def = BuiltInRegistries.ENTITY_TYPE.wrapAsHolder(le.getType())
+                .getData(DefaultProfile.ENTITY_DEFAULT_PROFILE);
+        if (def == null) return;
+
+        def.faction().ifPresent(f -> NexusRPGApi.profiles().setFaction(le, f));
+        def.classes().forEach(c -> NexusRPGApi.profiles().addClass(le, c));
     }
 
     @SubscribeEvent

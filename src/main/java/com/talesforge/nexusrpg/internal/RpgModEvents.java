@@ -3,6 +3,7 @@ package com.talesforge.nexusrpg.internal;
 import com.talesforge.nexusrpg.NexusRPG;
 import com.talesforge.nexusrpg.api.NexusRPGRegistries;
 import com.talesforge.nexusrpg.api.faction.Faction;
+import com.talesforge.nexusrpg.api.profile.DefaultProfile;
 import com.talesforge.nexusrpg.api.rarity.Rarity;
 import com.talesforge.nexusrpg.api.rpgclass.ClassType;
 import com.talesforge.nexusrpg.api.rpgclass.RpgClass;
@@ -47,6 +48,7 @@ public final class RpgModEvents {
     @SubscribeEvent
     public static void onDataMaps(RegisterDataMapTypesEvent event) {
         event.register(WeaponHelper.ITEM_WEAPON_TYPE);
+        event.register(DefaultProfile.ENTITY_DEFAULT_PROFILE);
     }
 
     private RpgModEvents() {}

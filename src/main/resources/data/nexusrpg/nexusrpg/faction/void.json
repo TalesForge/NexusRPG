@@ -1,7 +1,7 @@
 {
   "color": "#55FF55",
   "rarity": "nexusrpg:common",
-  "default_relation": "neutral",
+  "default_relation": "enemy",
   "relations": {
 
   }

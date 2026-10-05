@@ -2,9 +2,8 @@
   "type": "nexusrpg:combat",
   "rarity": "nexusrpg:common",
   "weapon_types": [
-    "nexusrpg:one_handed_sword",
-    "nexusrpg:two_handed_sword",
-    "nexusrpg:axe"
+    "nexusrpg:bow",
+    "nexusrpg:crossbow"
   ],
   "abilities": [
 

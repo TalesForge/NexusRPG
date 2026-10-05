@@ -3,9 +3,41 @@
     "minecraft:wooden_sword": "nexusrpg:one_handed_sword",
     "minecraft:stone_sword": "nexusrpg:one_handed_sword",
     "minecraft:iron_sword": "nexusrpg:one_handed_sword",
+    "minecraft:golden_sword": "nexusrpg:one_handed_sword",
     "minecraft:diamond_sword": "nexusrpg:one_handed_sword",
+    "minecraft:netherite_sword": "nexusrpg:one_handed_sword",
+
+    "minecraft:wooden_axe": "nexusrpg:axe",
+    "minecraft:stone_axe": "nexusrpg:axe",
     "minecraft:iron_axe": "nexusrpg:axe",
+    "minecraft:golden_axe": "nexusrpg:axe",
     "minecraft:diamond_axe": "nexusrpg:axe",
-    "minecraft:bow": "nexusrpg:bow"
+    "minecraft:netherite_axe": "nexusrpg:axe",
+
+    "minecraft:wooden_pickaxe": "nexusrpg:pickaxe",
+    "minecraft:stone_pickaxe": "nexusrpg:pickaxe",
+    "minecraft:iron_pickaxe": "nexusrpg:pickaxe",
+    "minecraft:golden_pickaxe": "nexusrpg:pickaxe",
+    "minecraft:diamond_pickaxe": "nexusrpg:pickaxe",
+    "minecraft:netherite_pickaxe": "nexusrpg:pickaxe",
+
+    "minecraft:wooden_shovel": "nexusrpg:shovel",
+    "minecraft:stone_shovel": "nexusrpg:shovel",
+    "minecraft:iron_shovel": "nexusrpg:shovel",
+    "minecraft:golden_shovel": "nexusrpg:shovel",
+    "minecraft:diamond_shovel": "nexusrpg:shovel",
+    "minecraft:netherite_shovel": "nexusrpg:shovel",
+
+    "minecraft:wooden_hoe": "nexusrpg:hoe",
+    "minecraft:stone_hoe": "nexusrpg:hoe",
+    "minecraft:iron_hoe": "nexusrpg:hoe",
+    "minecraft:golden_hoe": "nexusrpg:hoe",
+    "minecraft:diamond_hoe": "nexusrpg:hoe",
+    "minecraft:netherite_hoe": "nexusrpg:hoe",
+
+    "minecraft:bow": "nexusrpg:bow",
+    "minecraft:crossbow": "nexusrpg:crossbow",
+
+    "minecraft:trident": "nexusrpg:trident"
   }
 }

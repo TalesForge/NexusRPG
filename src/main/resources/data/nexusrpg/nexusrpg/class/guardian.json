@@ -1,10 +1,10 @@
 {
-  "type": "nexusrpg:combat",
+  "type": "nexusrpg:support",
   "rarity": "nexusrpg:common",
   "weapon_types": [
-    "nexusrpg:one_handed_sword",
     "nexusrpg:two_handed_sword",
-    "nexusrpg:axe"
+    "nexusrpg:halberd",
+    "nexusrpg:hammer"
   ],
   "abilities": [
 

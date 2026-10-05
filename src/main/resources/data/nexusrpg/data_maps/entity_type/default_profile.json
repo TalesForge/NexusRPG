@@ -1,5 +1,10 @@
 {
   "values": {
+    "minecraft:player": {
+      "faction": "nexusrpg:players"
+    },
+
+
     "minecraft:zombie": {
       "faction": "nexusrpg:undead"
     },
@@ -59,9 +64,6 @@
     },
 
 
-    "minecraft:player": {
-      "faction": "nexusrpg:nomads"
-    },
     "minecraft:wandering_trader": {
       "faction": "nexusrpg:nomads"
     },
@@ -106,7 +108,7 @@
 
 
     "minecraft:witch": {
-      "faction": "nexusrpg:wickeds",
+      "faction": "nexusrpg:unholy",
       "classes": [
         "nexusrpg:alchemist"
       ]

@@ -2,7 +2,6 @@ package com.talesforge.nexusrpg;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -12,7 +11,6 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
  * All code that uses client classes (Minecraft, Screen...) should live only here or in the client package.
  */
 @Mod(value = NexusRPG.MOD_ID, dist = Dist.CLIENT)
-@EventBusSubscriber(modid = NexusRPG.MOD_ID, value = Dist.CLIENT)
 public class NexusRPGClient {
     public NexusRPGClient(ModContainer container) {
         // The settings screen in the mods menu

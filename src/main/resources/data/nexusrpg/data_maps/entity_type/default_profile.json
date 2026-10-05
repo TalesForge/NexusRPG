@@ -59,6 +59,9 @@
     },
 
 
+    "minecraft:player": {
+      "faction": "nexusrpg:nomads"
+    },
     "minecraft:wandering_trader": {
       "faction": "nexusrpg:nomads"
     },

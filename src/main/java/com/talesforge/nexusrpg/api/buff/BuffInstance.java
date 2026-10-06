@@ -28,6 +28,11 @@ public record BuffInstance(ResourceLocation type, int level, int remainingTicks,
         return new BuffInstance(type, level, ticks, Optional.empty());
     }
 
+    /** Same buff type from the same source: such instances are merged by the stack policy; different sources coexist. */
+    public boolean sameSlot(BuffInstance other) {
+        return type.equals(other.type) && source.equals(other.source);
+    }
+
     public BuffInstance withLevel(int level) { return new BuffInstance(type, level, remainingTicks, source); }
     public BuffInstance withRemaining(int ticks) { return new BuffInstance(type, level, ticks, source); }
 

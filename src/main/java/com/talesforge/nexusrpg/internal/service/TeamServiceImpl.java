@@ -1,5 +1,8 @@
 package com.talesforge.nexusrpg.internal.service;
 
+import java.util.function.Predicate;
+import net.minecraft.resources.ResourceLocation;
+import com.talesforge.nexusrpg.api.team.LeaveReason;
 import com.talesforge.nexusrpg.api.NexusRPGRegistries;
 import com.talesforge.nexusrpg.api.buff.BuffInstance;
 import com.talesforge.nexusrpg.api.buff.BuffType;
@@ -76,6 +79,11 @@ public final class TeamServiceImpl implements TeamService {
 
     @Override
     public boolean leave(LivingEntity e) {
+        return leave(e, LeaveReason.LEFT);
+    }
+
+    @Override
+    public boolean leave(LivingEntity e, LeaveReason reason) {
         Guard.server(e);
         UUID teamId = ProfileStore.get(e).teamId().orElse(null);
         if (teamId == null) return false;
@@ -83,7 +91,7 @@ public final class TeamServiceImpl implements TeamService {
         TeamManager m = TeamManager.get(e.getServer());
         RpgTeam team = m.get(teamId).orElse(null);
         if (team != null) {
-            NeoForge.EVENT_BUS.post(new TeamMemberLeaveEvent(team, e));
+            NeoForge.EVENT_BUS.post(new TeamMemberLeaveEvent(team, e, reason));
             for (BuffInstance b : team.buffs()) {
                 BuffType t = NexusRPGRegistries.BUFF_TYPES.get(b.type());
                 if (t != null) t.onRemove(e, b);
@@ -101,6 +109,7 @@ public final class TeamServiceImpl implements TeamService {
         if (team == null) return false;
         List<BuffInstance> buffs = List.copyOf(team.buffs());
         for (LivingEntity member : onlineMembers(s, teamId)) {
+            NeoForge.EVENT_BUS.post(new TeamMemberLeaveEvent(team, member, LeaveReason.DISBANDED));
             for (BuffInstance b : buffs) {
                 BuffType t = NexusRPGRegistries.BUFF_TYPES.get(b.type());
                 if (t != null) t.onRemove(member, b);
@@ -130,10 +139,37 @@ public final class TeamServiceImpl implements TeamService {
         if (team == null || type == null) return false;
         if (NeoForge.EVENT_BUS.post(new TeamBuffApplyEvent(team, buff)).isCanceled()) return false;
 
-        boolean isNew = team.buffs().stream().noneMatch(b -> b.type().equals(buff.type()));
+        boolean isNew = team.buffs().stream().noneMatch(b -> b.sameSlot(buff));
         m.setBuffs(teamId, type.merge(team.buffs(), buff));
         if (isNew) onlineMembers(s, teamId).forEach(le -> type.onApply(le, buff));
         return true;
+    }
+
+    @Override
+    public int removeBuffsFromSource(MinecraftServer s, UUID teamId, UUID source) {
+        return removeTeamBuffs(s, teamId, b -> b.source().map(source::equals).orElse(false));
+    }
+
+    @Override
+    public int removeBuff(MinecraftServer s, UUID teamId, ResourceLocation type) {
+        return removeTeamBuffs(s, teamId, b -> b.type().equals(type));
+    }
+
+    private int removeTeamBuffs(MinecraftServer s, UUID teamId, Predicate<BuffInstance> filter) {
+        TeamManager m = TeamManager.get(s);
+        RpgTeam team = m.get(teamId).orElse(null);
+        if (team == null) return 0;
+        List<BuffInstance> removed = team.buffs().stream().filter(filter).toList();
+        if (removed.isEmpty()) return 0;
+        List<BuffInstance> kept = team.buffs().stream().filter(filter.negate()).toList();
+        m.setBuffs(teamId, kept);
+        for (LivingEntity member : onlineMembers(s, teamId)) {
+            for (BuffInstance b : removed) {
+                BuffType t = NexusRPGRegistries.BUFF_TYPES.get(b.type());
+                if (t != null) t.onRemove(member, b);
+            }
+        }
+        return removed.size();
     }
 
     /** Each server tick: countdown of the duration of team buffs. */

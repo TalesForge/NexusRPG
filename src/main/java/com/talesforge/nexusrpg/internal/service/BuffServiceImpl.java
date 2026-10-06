@@ -1,5 +1,6 @@
 package com.talesforge.nexusrpg.internal.service;
 
+import java.util.UUID;
 import com.talesforge.nexusrpg.api.NexusRPGApi;
 import com.talesforge.nexusrpg.api.NexusRPGRegistries;
 import com.talesforge.nexusrpg.api.buff.BuffInstance;
@@ -41,10 +42,27 @@ public final class BuffServiceImpl implements BuffService {
         if (NeoForge.EVENT_BUS.post(new BuffApplyEvent(e, buff)).isCanceled()) return false;
 
         RpgProfile p = ProfileStore.get(e);
-        boolean isNew = p.buffs().stream().noneMatch(b -> b.type().equals(buff.type()));
+        boolean isNew = p.buffs().stream().noneMatch(b -> b.sameSlot(buff));
         ProfileStore.set(e, p.withBuffs(type.merge(p.buffs(), buff)));
         if (isNew) type.onApply(e, buff);
         return true;
+    }
+
+    @Override
+    public int removeFromSource(LivingEntity e, UUID source) {
+        Guard.server(e);
+        RpgProfile p = ProfileStore.get(e);
+        List<BuffInstance> removed = p.buffs().stream()
+                .filter(b -> b.source().map(source::equals).orElse(false)).toList();
+        if (removed.isEmpty()) return 0;
+        List<BuffInstance> next = new ArrayList<>(p.buffs());
+        next.removeAll(removed);
+        ProfileStore.set(e, p.withBuffs(next));
+        for (BuffInstance b : removed) {
+            BuffType t = NexusRPGRegistries.BUFF_TYPES.get(b.type());
+            if (t != null) t.onRemove(e, b);
+        }
+        return removed.size();
     }
 
     @Override

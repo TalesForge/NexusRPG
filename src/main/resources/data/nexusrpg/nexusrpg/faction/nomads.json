@@ -3,6 +3,6 @@
   "rarity": "nexusrpg:common",
   "default_relation": "neutral",
   "relations": {
-
+    "nexusrpg:illagers": "enemy"
   }
 }

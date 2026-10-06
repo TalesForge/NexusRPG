@@ -3,6 +3,9 @@
   "rarity": "nexusrpg:common",
   "default_relation": "neutral",
   "relations": {
-
+    "nexusrpg:players": "enemy",
+    "nexusrpg:villagers": "enemy",
+    "nexusrpg:nomads": "enemy",
+    "nexusrpg:unholy": "ally"
   }
 }

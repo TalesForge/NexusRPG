@@ -3,6 +3,18 @@
   "rarity": "nexusrpg:common",
   "default_relation": "neutral",
   "relations": {
-
+    "nexusrpg:players": "enemy",
+    "nexusrpg:aquatics": "enemy",
+    "nexusrpg:creepers": "enemy",
+    "nexusrpg:elementals": "enemy",
+    "nexusrpg:ethereals": "enemy",
+    "nexusrpg:illagers": "enemy",
+    "nexusrpg:nature": "enemy",
+    "nexusrpg:nomads": "enemy",
+    "nexusrpg:piglins": "enemy",
+    "nexusrpg:undead": "enemy",
+    "nexusrpg:unholy": "enemy",
+    "nexusrpg:villagers": "enemy",
+    "nexusrpg:void": "enemy"
   }
 }

@@ -40,7 +40,7 @@ public class BuffType {
         List<BuffInstance> out = new ArrayList<>(current);
         for (int i = 0; i < out.size(); i++) {
             BuffInstance ex = out.get(i);
-            if (!ex.type().equals(incoming.type())) continue;
+            if (!ex.sameSlot(incoming)) continue;
 
             int ticks = (ex.remainingTicks() < 0 || incoming.remainingTicks() < 0)
                     ? BuffInstance.PERMANENT

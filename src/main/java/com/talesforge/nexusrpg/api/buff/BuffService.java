@@ -1,5 +1,6 @@
 package com.talesforge.nexusrpg.api.buff;
 
+import java.util.UUID;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -18,4 +19,7 @@ public interface BuffService {
     boolean apply(LivingEntity entity, BuffInstance buff);
 
     boolean remove(LivingEntity entity, ResourceLocation type);
+
+    /** Removes every personal buff that was given by {@code source}. Server only. @return how many were removed. */
+    int removeFromSource(LivingEntity entity, UUID source);
 }

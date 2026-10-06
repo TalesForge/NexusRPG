@@ -1,5 +1,7 @@
 package com.talesforge.nexusrpg.internal;
 
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import com.talesforge.nexusrpg.api.team.LeaveReason;
 import com.talesforge.nexusrpg.NexusRPG;
 import com.talesforge.nexusrpg.api.NexusRPGApi;
 import com.talesforge.nexusrpg.internal.command.NexusRPGCommand;
@@ -40,6 +42,11 @@ public final class RpgGameEvents {
     }
 
     @SubscribeEvent
+    public static void onServerStarted(ServerStartedEvent event) {
+        RpgValidator.validate(event.getServer());  // Warn (in the log) about broken references in the data
+    }
+
+    @SubscribeEvent
     public static void onServerTick(ServerTickEvent.Post event) {
         TeamServiceImpl.tickTeamBuffs(event.getServer());
     }
@@ -52,7 +59,7 @@ public final class RpgGameEvents {
     public static void onDeath(LivingDeathEvent event) {
         LivingEntity e = event.getEntity();
         if (!(e instanceof Player) && !e.level().isClientSide() && e.hasData(RpgAttachments.PROFILE)) {
-            NexusRPGApi.teams().leave(e);
+            NexusRPGApi.teams().leave(e, LeaveReason.DEATH);
         }
     }
 
